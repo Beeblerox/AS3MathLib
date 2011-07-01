@@ -146,8 +146,8 @@ package
 			trace(testMatr.m);
 			trace("LUP Solution");
 			var permutationMatr:MatrixMath = new MatrixMath(testMatr1.rows, 1);
-			MatrixMath.LUPDecomposition(testMatr3, testMatr1);
-			testMatr = MatrixMath.LUPSolution(testMatr1, testMatr1, testMatr2);
+			MatrixMath.LUPDecomposition(testMatr1, permutationMatr);
+			testMatr = MatrixMath.LUPSolution(testMatr1, permutationMatr, testMatr2);
 			trace(testMatr.m);
 		}
 		
