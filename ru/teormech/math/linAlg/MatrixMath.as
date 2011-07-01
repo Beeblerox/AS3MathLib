@@ -416,29 +416,34 @@ package ru.teormech.math.linAlg
 			var part2:MatrixMath;
 			var tempMatr:MatrixMath;
 			var mult:int;
+			var element:Number;
 			
 			if (numRows > 1)
 			{
 				for (var i:int = 0; i < numRows; i++)
 				{
-					(i % 2 == 0) ? mult = 1 : mult = -1;
-					
-					if (i == 0) 
+					element = _m[i];
+					if (element != 0)
 					{
-						tempMatr = fragment(1, 1, numRows - 1, columns - 1);
+						(i % 2 == 0) ? mult = 1 : mult = -1;
+						
+						if (i == 0) 
+						{
+							tempMatr = fragment(1, 1, numRows - 1, columns - 1);
+						}
+						else if (i == numRows - 1)
+						{
+							tempMatr = fragment(1, 0, numRows - 1, columns - 2);
+						}
+						else
+						{
+							part1 = fragment(1, 0, numRows - 1, i - 1);
+							part2 = fragment(1, i + 1, numRows - 1, columns - 1);
+							tempMatr = part1.merge(part2);
+						}
+						
+						det += mult * element * tempMatr.recursiveDeterminant();
 					}
-					else if (i == numRows - 1)
-					{
-						tempMatr = fragment(1, 0, numRows - 1, columns - 2);
-					}
-					else
-					{
-						part1 = fragment(1, 0, numRows - 1, i - 1);
-						part2 = fragment(1, i + 1, numRows - 1, columns - 1);
-						tempMatr = part1.merge(part2);
-					}
-					
-					det += mult * _m[i] * tempMatr.recursiveDeterminant();
 				}
 			}
 			else
