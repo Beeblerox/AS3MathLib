@@ -836,8 +836,12 @@ package ru.teormech.math.linAlg
 		 */
 		public function setMatrixFromVector(matrixVector:Vector.<Number>, numRows:uint, numCols:uint):void
 		{
-			if (numRows * numCols != matrixVector.length) return;
-			_m = matrixVector;
+			var numElements:uint = numRows * numCols;
+			if (numElements != matrixVector.length) return;
+			for (var i:int = 0; i < numElements; i++)
+			{
+				_m[i] = matrixVector[i];
+			}
 			_rows = numRows;
 			_columns = numCols;
 		}
