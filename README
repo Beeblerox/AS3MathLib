@@ -1,1 +1,3 @@
-This release contains only matrix math class, which can be used for solution of systems of linear equations mostly (see examples)
+This release contains:
+- matrix math class, which can be used for solution of systems of linear equations mostly (see examples), 
+- 2-dimensional vector class, which could be useful for simple physical simulations (more info soon)
